@@ -1,7 +1,7 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-// Logo KDR
-import kdrLogo from "../assets/images/logo/kdr-logo.png";
+// import data general
+import general_data from "../services/general_service";
 
 const NavigationBar = () => {
   return (
@@ -9,8 +9,15 @@ const NavigationBar = () => {
       <Navbar expand="lg" className="bg-body-tertiary kdr-navbar">
         <Container>
           <Navbar.Brand href="/" className="kdr-navbar-brand">
-            <img src={kdrLogo} alt="Logo KDR" />
-            <span className="ms-2">Karta Daya Reksabumi</span>
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/logo/" +
+                general_data[0].logoImage
+              }
+              alt="Logo KDR"
+            />
+            <span className="ms-2">{general_data[0].title}</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

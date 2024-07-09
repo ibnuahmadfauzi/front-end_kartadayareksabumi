@@ -1,21 +1,29 @@
 import { Container } from "react-bootstrap";
 
-// Import Hero Image
-import heroImage from "../assets/images/hero/hero-image.jpg";
+// import data general
+import general_data from "../services/general_service";
 
 const Header = () => {
   return (
     <Container>
       <div className="row align-items-center kdr-hero-section">
         <div className="col-lg-6 py-5">
-          <h1>Karta Daya Reksabumi</h1>
-          <h3>Spatial - Planning - IT Development</h3>
+          <h1>{general_data[0].title}</h1>
+          <h3>{general_data[0].description}</h3>
           <p>
             <a href="#">Layanan Kami</a>
           </p>
         </div>
         <div className="col-lg-6 py-5">
-          <img src={heroImage} alt="Hero Image" className="img-fluid" />
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              "/assets/images/" +
+              general_data[0].heroImage
+            }
+            alt="Hero Image"
+            className="img-fluid"
+          />
         </div>
       </div>
     </Container>
