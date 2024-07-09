@@ -67,3 +67,26 @@ body {
   line-height: 30px;
 }
 /* end Style for About Me Section */
+
+/* Styie for Characteristic Section */
+.kdr-characteristic-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.kdr-characteristic-item {
+  width: 30%;
+  text-align: center;
+  background-color: #ffffff;
+  margin: 20px 0;
+  padding: 30px;
+  border-radius: 20px;
+}
+.kdr-characteristic-item img {
+  height: 80px;
+  margin: 20px 0;
+}
+.kdr-characteristic-item:hover {
+  cursor: pointer;
+}
+/* end Styie for Characteristic Section */
