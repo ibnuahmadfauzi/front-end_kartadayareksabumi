@@ -90,3 +90,26 @@ body {
   cursor: pointer;
 }
 /* end Styie for Characteristic Section */
+
+/* Style for Product Section */
+.kdr-product-section {
+  border-radius: 20px;
+  width: 100%;
+  padding: 30px 0;
+  background-color: #ffffff;
+}
+.kdr-product-section h3 {
+  font-weight: 600;
+}
+.kdr-product-section-img-container {
+  padding: 20px;
+}
+.kdr-product-section-img-container img {
+  width: 100%;
+  border-radius: 50px 0 50px 0;
+}
+.kdr-product-section-description-container {
+  padding: 20px;
+  text-align: justify;
+}
+/* end Style for Product Section */
