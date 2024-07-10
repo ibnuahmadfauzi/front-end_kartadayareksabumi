@@ -23,8 +23,8 @@ const NavigationBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="/">Beranda</Nav.Link>
-              <Nav.Link href="#">Tentang Kami</Nav.Link>
-              <Nav.Link href="#">Kontak</Nav.Link>
+              <Nav.Link href="/#about-me">Tentang Kami</Nav.Link>
+              <Nav.Link href="#contact">Kontak</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

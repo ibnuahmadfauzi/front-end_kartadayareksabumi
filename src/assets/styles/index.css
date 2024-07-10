@@ -149,3 +149,76 @@ body {
   height: 150px;
 }
 /* end Style for Parter Section */
+
+/* Style for No Page Section */
+.kdr-no-page {
+  border-radius: 20px;
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+}
+.kdr-no-page img {
+  width: 50%;
+}
+/* end Style for No Page Section */
+
+/* Mobile and Table Preview */
+@media only screen and (max-width: 991px) {
+  /* Responsive for Navbar Section */
+  .kdr-navbar-brand span {
+    display: none;
+  }
+  /* Responsive for Hero or Header Section */
+  .kdr-hero-section {
+    padding: 0;
+  }
+  .kdr-hero-section h1 {
+    font-size: 50px;
+  }
+  .kdr-hero-section h3 {
+    font-size: 20px;
+  }
+  .kdr-hero-section img {
+    display: none;
+  }
+  .kdr-hero-section-image-container {
+    padding: 0 !important;
+  }
+  /* Responsive for About Me Section */
+  .about-me-section img {
+    height: 100px;
+    width: auto;
+    margin-bottom: 40px;
+  }
+  .about-me-section-image-container {
+    text-align: center;
+  }
+  /* Responsive for Characteristic Section */
+  .kdr-characteristic-group {
+    display: block;
+  }
+  .kdr-characteristic-item {
+    width: 100%;
+  }
+  /* Responsive for Product Section */
+  .kdr-product-section-reverse {
+    flex-direction: column-reverse !important;
+  }
+  /* Responsive for Partner Section */
+  #kdr-partner-box-2,
+  #kdr-partner-box-3 {
+    display: none;
+  }
+  /* Responsive for Footer Section */
+  .kdr-footer-section h3 {
+    margin-top: 15px !important;
+  }
+  .kdr-footer-section-box-item {
+    padding: 10px !important;
+    margin: 15px 0;
+  }
+  /* Responsive for No Page Section */
+  .kdr-no-page img {
+    width: 100%;
+  }
+}

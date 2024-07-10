@@ -1,5 +1,16 @@
+import { Container } from "react-bootstrap";
+
 const NoPage = () => {
-  return <h1>404</h1>;
+  return (
+    <div className="kdr-no-page">
+      <Container fluid>
+        <img
+          src={process.env.PUBLIC_URL + "/assets/logo/404.gif"}
+          alt="Logo KDR"
+        />
+      </Container>
+    </div>
+  );
 };
 
 export default NoPage;

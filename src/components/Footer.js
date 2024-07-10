@@ -3,12 +3,12 @@ import { Container } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
-      <div className="kdr-footer-section">
+      <div className="kdr-footer-section" id="contact">
         <Container>
           <div className="row">
             <div className="col-lg-6">
               <h3 className="text-center mt-5">Hubungi Kami</h3>
-              <div className="p-5">
+              <div className="p-5 kdr-footer-section-box-item">
                 <h4>Main Office</h4>
                 <p>
                   Dk. Kramatsari 05/05. Karanggeneng, Boyolali, Jawa Tengah,
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
             <div className="col-lg-6">
               <h3 className="text-center mt-5">Tinggalkan Pesan</h3>
-              <form className="p-5">
+              <form className="p-5 kdr-footer-section-box-item">
                 <div className="row mb-3">
                   <div className="col-lg-6">
                     <label className="form-label">Nama :</label>
@@ -56,13 +56,18 @@ const Footer = () => {
                     placeholder="Subjek Pesan ..."
                   />
                 </div>
-                <div>
+                <div className="mb-3">
                   <label className="form-label">Pesan :</label>
                   <textarea
                     className="form-control"
                     placeholder="Pesan ..."
                     rows="5"
                   ></textarea>
+                </div>
+                <div>
+                  <button type="submit" className="w-100 btn btn-secondary">
+                    Kirim
+                  </button>
                 </div>
               </form>
             </div>

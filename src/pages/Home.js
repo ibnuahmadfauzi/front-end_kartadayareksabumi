@@ -31,10 +31,10 @@ const Header = () => {
           <h1>{general_data[0].title}</h1>
           <h3>{general_data[0].description}</h3>
           <p>
-            <a href="#">Layanan Kami</a>
+            <a href="#product">Layanan Kami</a>
           </p>
         </div>
-        <div className="col-lg-6 py-5">
+        <div className="col-lg-6 py-5 kdr-hero-section-image-container">
           <img
             src={
               process.env.PUBLIC_URL +
@@ -52,11 +52,11 @@ const Header = () => {
 
 const AboutMe = () => {
   return (
-    <div className="about-me-section">
+    <div className="about-me-section" id="about-me">
       <Container>
         <h3 className="text-center">Tentang Kami</h3>
         <div className="row align-items-center">
-          <div className="col-lg-4">
+          <div className="col-lg-4 about-me-section-image-container">
             <img
               src={process.env.PUBLIC_URL + "/assets/logo/" + data[0].image}
               alt="Logo KDR"
@@ -98,12 +98,12 @@ const Characteristic = () => {
 
 const Product = () => {
   return (
-    <div className="kdr-product-section">
+    <div className="kdr-product-section" id="product">
       <Container>
         <h3 className="text-center">Layanan Kami</h3>
         {dataProduct.map((value) =>
           value.id % 2 != 0 ? (
-            <div className="row  align-items-center">
+            <div className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">
                 <img
                   src={
@@ -119,7 +119,7 @@ const Product = () => {
               />
             </div>
           ) : (
-            <div className="row  align-items-center">
+            <div className="row align-items-center kdr-product-section-reverse">
               <div
                 className="col-lg-6 kdr-product-section-description-container"
                 dangerouslySetInnerHTML={{ __html: value.description }}
