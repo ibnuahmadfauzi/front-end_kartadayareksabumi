@@ -10,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Import CSS File
 import "./assets/styles/index.css";
 
+// Import Script File
+import "./assets/script/index.js";
+
 // Import Component Page
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";

@@ -14,8 +14,15 @@ import data from "../services/about_me_service";
 // import data general
 import general_data from "../services/general_service";
 
+// import data partner
+import partner_data from "../services/partner_service";
+
 // import Bootstrap Component
 import { Container } from "react-bootstrap";
+
+// Import jQuery
+import $ from "jquery";
+import data_partner from "../services/partner_service";
 
 const Header = () => {
   return (
@@ -91,7 +98,6 @@ const Characteristic = () => {
 };
 
 const Product = () => {
-  console.log(dataProduct);
   return (
     <div className="kdr-product-section">
       <Container>
@@ -136,6 +142,33 @@ const Product = () => {
   );
 };
 
+const Partner = () => {
+  return (
+    <div className="kdr-partner-section">
+      <Container>
+        <h3>Partner Kami</h3>
+        <div className="row">
+          <div className="col-lg-4">
+            <div className="kdr-partner-box" id="kdr-partner-box-1">
+              <img />
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="kdr-partner-box" id="kdr-partner-box-2">
+              <img />
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="kdr-partner-box" id="kdr-partner-box-3">
+              <img />
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+};
+
 const Home = () => {
   return (
     <>
@@ -143,8 +176,79 @@ const Home = () => {
       <AboutMe />
       <Characteristic />
       <Product />
+      <Partner />
     </>
   );
 };
+
+$(document).ready(function () {
+  let partner1 = 0;
+  let partner2 = 1;
+  let partner3 = 2;
+  let dataPartnerLength = data_partner.length;
+
+  setInterval(function () {
+    if (partner1 >= dataPartnerLength) {
+      partner1 = 0;
+      $("#kdr-partner-box-1 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner1].image
+      );
+      partner1++;
+    } else {
+      $("#kdr-partner-box-1 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner1].image
+      );
+      partner1++;
+    }
+  }, 4000);
+
+  setInterval(function () {
+    if (partner2 >= dataPartnerLength) {
+      partner2 = 0;
+      $("#kdr-partner-box-2 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner2].image
+      );
+      partner2++;
+    } else {
+      $("#kdr-partner-box-2 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner2].image
+      );
+      partner2++;
+    }
+  }, 4000);
+
+  setInterval(function () {
+    if (partner3 >= dataPartnerLength) {
+      partner3 = 0;
+      $("#kdr-partner-box-3 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner3].image
+      );
+      partner3++;
+    } else {
+      $("#kdr-partner-box-3 img").attr(
+        "src",
+        process.env.PUBLIC_URL +
+          "/assets/images/partner/" +
+          data_partner[partner3].image
+      );
+      partner3++;
+    }
+  }, 4000);
+});
 
 export default Home;
