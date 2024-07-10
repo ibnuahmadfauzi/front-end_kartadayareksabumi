@@ -22,7 +22,6 @@ import { Container } from "react-bootstrap";
 
 // Import jQuery
 import $ from "jquery";
-import data_partner from "../services/partner_service";
 
 const Header = () => {
   return (
@@ -185,7 +184,7 @@ $(document).ready(function () {
   let partner1 = 0;
   let partner2 = 1;
   let partner3 = 2;
-  let dataPartnerLength = data_partner.length;
+  let dataPartnerLength = partner_data.length;
 
   setInterval(function () {
     if (partner1 >= dataPartnerLength) {
@@ -194,7 +193,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner1].image
+          partner_data[partner1].image
       );
       partner1++;
     } else {
@@ -202,7 +201,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner1].image
+          partner_data[partner1].image
       );
       partner1++;
     }
@@ -215,7 +214,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner2].image
+          partner_data[partner2].image
       );
       partner2++;
     } else {
@@ -223,7 +222,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner2].image
+          partner_data[partner2].image
       );
       partner2++;
     }
@@ -236,7 +235,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner3].image
+          partner_data[partner3].image
       );
       partner3++;
     } else {
@@ -244,7 +243,7 @@ $(document).ready(function () {
         "src",
         process.env.PUBLIC_URL +
           "/assets/images/partner/" +
-          data_partner[partner3].image
+          partner_data[partner3].image
       );
       partner3++;
     }
