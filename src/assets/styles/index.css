@@ -113,3 +113,14 @@ body {
   text-align: justify;
 }
 /* end Style for Product Section */
+
+/* Style for Footer Section */
+.kdr-footer-section {
+  margin: 20px 0;
+  padding: 30px 0;
+  width: 100%;
+  background-color: #373737;
+  border-radius: 20px;
+  color: #ffffff;
+}
+/* end Style for Footer Section */
