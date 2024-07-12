@@ -53,6 +53,7 @@ body {
   border-radius: 20px;
   width: 100%;
   padding: 30px 0;
+  opacity: 0;
 }
 .about-me-section h3 {
   font-weight: 600;
@@ -73,6 +74,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  opacity: 0;
 }
 .kdr-characteristic-item {
   width: 30%;
@@ -97,6 +99,7 @@ body {
   width: 100%;
   padding: 30px 0;
   background-color: #ffffff;
+  opacity: 0;
 }
 .kdr-product-section h3 {
   font-weight: 600;
@@ -132,6 +135,7 @@ body {
   width: 100%;
   margin: 30px 0;
   padding-top: 30px;
+  opacity: 0;
 }
 .kdr-partner-section h3 {
   font-weight: 600;

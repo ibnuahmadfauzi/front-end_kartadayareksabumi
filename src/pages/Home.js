@@ -22,6 +22,9 @@ import { Container } from "react-bootstrap";
 
 // Import jQuery
 import $ from "jquery";
+import dataArtikel from "../services/article_service";
+import artikel from "../services/article_service";
+// import data_article from "../services/article_service";
 
 const Header = () => {
   return (
@@ -50,6 +53,8 @@ const Header = () => {
   );
 };
 
+console.log(artikel);
+
 const AboutMe = () => {
   return (
     <div className="about-me-section" id="about-me">
@@ -77,7 +82,7 @@ const Characteristic = () => {
     <Container>
       <div className="kdr-characteristic-group">
         {dataCharacteristic[0].characteristic.map((value) => (
-          <div className="kdr-characteristic-item">
+          <div key={value.id} className="kdr-characteristic-item">
             <div>
               <img
                 src={
@@ -103,7 +108,7 @@ const Product = () => {
         <h3 className="text-center">Layanan Kami</h3>
         {dataProduct.map((value) =>
           value.id % 2 != 0 ? (
-            <div className="row align-items-center">
+            <div key={value.id} className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">
                 <img
                   src={
@@ -119,7 +124,10 @@ const Product = () => {
               />
             </div>
           ) : (
-            <div className="row align-items-center kdr-product-section-reverse">
+            <div
+              key={value.id}
+              className="row align-items-center kdr-product-section-reverse"
+            >
               <div
                 className="col-lg-6 kdr-product-section-description-container"
                 dangerouslySetInnerHTML={{ __html: value.description }}
@@ -180,74 +188,158 @@ const Home = () => {
   );
 };
 
+// data_article.then((data) => console.log(data[0].title));
+
 $(document).ready(function () {
   let partner1 = 0;
   let partner2 = 1;
   let partner3 = 2;
   let dataPartnerLength = partner_data.length;
 
+  $("#kdr-partner-box-1 img").hide();
+  $("#kdr-partner-box-2 img").hide();
+  $("#kdr-partner-box-3 img").hide();
+  $("#kdr-partner-box-1 img").attr(
+    "src",
+    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[0].image
+  );
+  $("#kdr-partner-box-2 img").attr(
+    "src",
+    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[1].image
+  );
+  $("#kdr-partner-box-3 img").attr(
+    "src",
+    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[2].image
+  );
+  $("#kdr-partner-box-1 img").fadeIn();
+  $("#kdr-partner-box-2 img").fadeIn();
+  $("#kdr-partner-box-3 img").fadeIn();
+  partner1++;
+  partner2++;
+  partner3++;
+
   setInterval(function () {
     if (partner1 >= dataPartnerLength) {
       partner1 = 0;
-      $("#kdr-partner-box-1 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner1].image
-      );
-      partner1++;
+      $("#kdr-partner-box-1 img").fadeOut(function () {
+        $("#kdr-partner-box-1 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner1].image
+        );
+        partner1++;
+      });
+      $("#kdr-partner-box-1 img").fadeIn();
     } else {
-      $("#kdr-partner-box-1 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner1].image
-      );
-      partner1++;
+      $("#kdr-partner-box-1 img").fadeOut(function () {
+        $("#kdr-partner-box-1 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner1].image
+        );
+        partner1++;
+      });
+      $("#kdr-partner-box-1 img").fadeIn();
     }
   }, 4000);
 
   setInterval(function () {
     if (partner2 >= dataPartnerLength) {
       partner2 = 0;
-      $("#kdr-partner-box-2 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner2].image
-      );
-      partner2++;
+      $("#kdr-partner-box-2 img").fadeOut(function () {
+        $("#kdr-partner-box-2 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner2].image
+        );
+        partner2++;
+      });
+      $("#kdr-partner-box-2 img").fadeIn();
     } else {
-      $("#kdr-partner-box-2 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner2].image
-      );
-      partner2++;
+      $("#kdr-partner-box-2 img").fadeOut(function () {
+        $("#kdr-partner-box-2 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner2].image
+        );
+        partner2++;
+      });
+      $("#kdr-partner-box-2 img").fadeIn();
     }
   }, 4000);
 
   setInterval(function () {
     if (partner3 >= dataPartnerLength) {
       partner3 = 0;
-      $("#kdr-partner-box-3 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner3].image
-      );
-      partner3++;
+      $("#kdr-partner-box-3 img").fadeOut(function () {
+        $("#kdr-partner-box-3 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner3].image
+        );
+        partner3++;
+      });
+      $("#kdr-partner-box-3 img").fadeIn();
     } else {
-      $("#kdr-partner-box-3 img").attr(
-        "src",
-        process.env.PUBLIC_URL +
-          "/assets/images/partner/" +
-          partner_data[partner3].image
-      );
-      partner3++;
+      $("#kdr-partner-box-3 img").fadeOut(function () {
+        $("#kdr-partner-box-3 img").attr(
+          "src",
+          process.env.PUBLIC_URL +
+            "/assets/images/partner/" +
+            partner_data[partner3].image
+        );
+        partner3++;
+      });
+      $("#kdr-partner-box-3 img").fadeIn();
     }
   }, 4000);
+
+  // Fade In Scroll
+  $(window).scroll(function () {
+    $(".about-me-section").each(function (i) {
+      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      if (bottom_of_window > bottom_of_element) {
+        $(this).animate({ opacity: "1" }, 1000);
+      }
+    });
+  });
+  $(window).scroll(function () {
+    $(".kdr-characteristic-group").each(function (i) {
+      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      if (bottom_of_window > bottom_of_element) {
+        $(this).animate({ opacity: "1" }, 1000);
+      }
+    });
+  });
+  $(window).scroll(function () {
+    $(".kdr-product-section").each(function (i) {
+      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      if (bottom_of_window > bottom_of_element) {
+        $(this).animate({ opacity: "1" }, 1000);
+      }
+    });
+  });
+  $(window).scroll(function () {
+    $(".kdr-partner-section").each(function (i) {
+      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      if (bottom_of_window > bottom_of_element) {
+        $(this).animate({ opacity: "1" }, 1000);
+      }
+    });
+  });
 });
 
 export default Home;
