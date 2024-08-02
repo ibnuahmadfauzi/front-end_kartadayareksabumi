@@ -22,9 +22,6 @@ import { Container } from "react-bootstrap";
 
 // Import jQuery
 import $ from "jquery";
-import dataArtikel from "../services/article_service";
-import artikel from "../services/article_service";
-// import data_article from "../services/article_service";
 
 const Header = () => {
   return (
@@ -52,8 +49,6 @@ const Header = () => {
     </Container>
   );
 };
-
-console.log(artikel);
 
 const AboutMe = () => {
   return (
@@ -106,8 +101,8 @@ const Product = () => {
     <div className="kdr-product-section" id="product">
       <Container>
         <h3 className="text-center">Layanan Kami</h3>
-        {dataProduct.map((value) =>
-          value.id % 2 != 0 ? (
+        {dataProduct.map((value, index) =>
+          (index + 1) % 2 != 0 ? (
             <div key={value.id} className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">
                 <img
@@ -187,8 +182,6 @@ const Home = () => {
     </>
   );
 };
-
-// data_article.then((data) => console.log(data[0].title));
 
 $(document).ready(function () {
   let partner1 = 0;
