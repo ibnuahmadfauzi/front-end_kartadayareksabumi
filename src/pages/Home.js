@@ -10,15 +10,15 @@ import { Container } from "react-bootstrap";
 import LogoSlider from "../components/LogoSlider";
 
 // Import Data General
-import landingPageData from "../services/data";
+import data from "../services/data";
 
 const Header = () => {
   return (
     <Container>
       <div className="row align-items-center kdr-hero-section">
         <div className="col-lg-6 py-5">
-          <h1>{landingPageData.general.title}</h1>
-          <h3>{landingPageData.general.description}</h3>
+          <h1>{data.general.title}</h1>
+          <h3>{data.general.description}</h3>
           <p>
             <a href="#product">Layanan Kami</a>
           </p>
@@ -28,7 +28,7 @@ const Header = () => {
             src={
               process.env.PUBLIC_URL +
               "/assets/images/" +
-              landingPageData.general.heroImage
+              data.general.heroImage
             }
             alt="Hero Image"
             className="img-fluid"
@@ -47,18 +47,14 @@ const AboutMe = () => {
         <div className="row align-items-center">
           <div className="col-lg-4 about-me-section-image-container">
             <img
-              src={
-                process.env.PUBLIC_URL +
-                "/assets/logo/" +
-                landingPageData.about.image
-              }
+              src={process.env.PUBLIC_URL + "/assets/logo/" + data.about.image}
               alt="Logo KDR"
             />
           </div>
           <div
             className="col-lg-8"
             dangerouslySetInnerHTML={{
-              __html: landingPageData.about.description,
+              __html: data.about.description,
             }}
           />
         </div>
@@ -71,7 +67,7 @@ const Characteristic = () => {
   return (
     <Container>
       <div className="kdr-characteristic-group">
-        {landingPageData.about.characteristics.map((value) => (
+        {data.about.characteristics.map((value) => (
           <div key={value.id} className="kdr-characteristic-item">
             <div>
               <img
@@ -96,7 +92,7 @@ const Product = () => {
     <div className="kdr-product-section" id="product">
       <Container>
         <h3 className="text-center">Layanan Kami</h3>
-        {landingPageData.products.map((value, index) =>
+        {data.products.map((value, index) =>
           (index + 1) % 2 != 0 ? (
             <div key={value.id} className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">

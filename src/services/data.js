@@ -64,6 +64,26 @@ const data = {
       name: "Badan Pertahanan Nasional",
       image: "bpn.png",
     },
+    {
+      id: 7,
+      name: "Kereta Api Indonesia",
+      image: "kai.png",
+    },
+    {
+      id: 8,
+      name: "Dinas Lingkungan Hidup",
+      image: "dlh.png",
+    },
+    {
+      id: 9,
+      name: "JPK",
+      image: "jpk.png",
+    },
+    {
+      id: 10,
+      name: "Jogja",
+      image: "jogja.png",
+    },
   ],
   products: [
     {
