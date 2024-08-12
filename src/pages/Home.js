@@ -3,35 +3,22 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
 
-// import data_product
-import dataProduct from "../services/product_service";
-
-// import data_characteristic
-import dataCharacteristic from "../services/general_service";
-
-// import data about
-import data from "../services/about_me_service";
-
-// import data general
-import general_data from "../services/general_service";
-
-// import data partner
-import partner_data from "../services/partner_service";
-
 // import Bootstrap Component
 import { Container } from "react-bootstrap";
 
 // Import jQuery
-import $ from "jquery";
 import LogoSlider from "../components/LogoSlider";
+
+// Import Data General
+import landingPageData from "../services/data";
 
 const Header = () => {
   return (
     <Container>
       <div className="row align-items-center kdr-hero-section">
         <div className="col-lg-6 py-5">
-          <h1>{general_data[0].title}</h1>
-          <h3>{general_data[0].description}</h3>
+          <h1>{landingPageData.general.title}</h1>
+          <h3>{landingPageData.general.description}</h3>
           <p>
             <a href="#product">Layanan Kami</a>
           </p>
@@ -41,7 +28,7 @@ const Header = () => {
             src={
               process.env.PUBLIC_URL +
               "/assets/images/" +
-              general_data[0].heroImage
+              landingPageData.general.heroImage
             }
             alt="Hero Image"
             className="img-fluid"
@@ -60,13 +47,19 @@ const AboutMe = () => {
         <div className="row align-items-center">
           <div className="col-lg-4 about-me-section-image-container">
             <img
-              src={process.env.PUBLIC_URL + "/assets/logo/" + data[0].image}
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/logo/" +
+                landingPageData.about.image
+              }
               alt="Logo KDR"
             />
           </div>
           <div
             className="col-lg-8"
-            dangerouslySetInnerHTML={{ __html: data[0].description }}
+            dangerouslySetInnerHTML={{
+              __html: landingPageData.about.description,
+            }}
           />
         </div>
       </Container>
@@ -78,19 +71,19 @@ const Characteristic = () => {
   return (
     <Container>
       <div className="kdr-characteristic-group">
-        {dataCharacteristic[0].characteristic.map((value) => (
+        {landingPageData.about.characteristics.map((value) => (
           <div key={value.id} className="kdr-characteristic-item">
             <div>
               <img
                 src={
                   process.env.PUBLIC_URL +
                   "/assets/images/characteristic/" +
-                  value.characteristicImage
+                  value.image
                 }
               />
             </div>
-            <h5>{value.characteristicName}</h5>
-            <p>{value.characteristicDescription}</p>
+            <h5>{value.name}</h5>
+            <p>{value.description}</p>
           </div>
         ))}
       </div>
@@ -103,7 +96,7 @@ const Product = () => {
     <div className="kdr-product-section" id="product">
       <Container>
         <h3 className="text-center">Layanan Kami</h3>
-        {dataProduct.map((value, index) =>
+        {landingPageData.products.map((value, index) =>
           (index + 1) % 2 != 0 ? (
             <div key={value.id} className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">

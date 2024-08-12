@@ -3,6 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// Import Data General
+import landingPageData from "../services/data";
+
 const LogoSlider = () => {
   const settings = {
     dots: true,
@@ -40,48 +43,16 @@ const LogoSlider = () => {
   return (
     <div className="logo-slider py-4 mb-5">
       <Slider {...settings}>
-        <div>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/images/partner/bpn.png"}
-            alt="Logo 1"
-          />
-        </div>
-        <div>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/images/partner/ipb.png"}
-            alt="Logo 2"
-          />
-        </div>
-        <div>
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "/assets/images/partner/pemkab_blitar.png"
-            }
-            alt="Logo 3"
-          />
-        </div>
-        <div>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/images/partner/ub.png"}
-            alt="Logo 4"
-          />
-        </div>
-        <div>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/images/partner/ugm.png"}
-            alt="Logo 4"
-          />
-        </div>
-        <div>
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "/assets/images/partner/pemkot_blitar.png"
-            }
-            alt="Logo 4"
-          />
-        </div>
+        {landingPageData.partners.map((value) => (
+          <div className={value.id}>
+            <img
+              src={
+                process.env.PUBLIC_URL + "/assets/images/partner/" + value.image
+              }
+              alt={value.name}
+            />
+          </div>
+        ))}
       </Slider>
     </div>
   );

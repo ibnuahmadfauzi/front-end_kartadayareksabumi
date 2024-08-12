@@ -1,7 +1,7 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-// import data general
-import general_data from "../services/general_service";
+// Import Data General
+import landingPageData from "../services/data";
 
 const NavigationBar = () => {
   return (
@@ -13,11 +13,11 @@ const NavigationBar = () => {
               src={
                 process.env.PUBLIC_URL +
                 "/assets/logo/" +
-                general_data[0].logoImage
+                landingPageData.general.logoImage
               }
               alt="Logo KDR"
             />
-            <span className="ms-2">{general_data[0].title}</span>
+            <span className="ms-2">{landingPageData.general.title}</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
