@@ -2,6 +2,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
+
 // import data_product
 import dataProduct from "../services/product_service";
 
@@ -22,6 +23,7 @@ import { Container } from "react-bootstrap";
 
 // Import jQuery
 import $ from "jquery";
+import LogoSlider from "../components/LogoSlider";
 
 const Header = () => {
   return (
@@ -149,23 +151,7 @@ const Partner = () => {
     <div className="kdr-partner-section">
       <Container>
         <h3>Partner Kami</h3>
-        <div className="row">
-          <div className="col-lg-4">
-            <div className="kdr-partner-box" id="kdr-partner-box-1">
-              <img />
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="kdr-partner-box" id="kdr-partner-box-2">
-              <img />
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="kdr-partner-box" id="kdr-partner-box-3">
-              <img />
-            </div>
-          </div>
-        </div>
+        <LogoSlider />
       </Container>
     </div>
   );
@@ -182,157 +168,5 @@ const Home = () => {
     </>
   );
 };
-
-$(document).ready(function () {
-  let partner1 = 0;
-  let partner2 = 1;
-  let partner3 = 2;
-  let dataPartnerLength = partner_data.length;
-
-  $("#kdr-partner-box-1 img").hide();
-  $("#kdr-partner-box-2 img").hide();
-  $("#kdr-partner-box-3 img").hide();
-  $("#kdr-partner-box-1 img").attr(
-    "src",
-    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[0].image
-  );
-  $("#kdr-partner-box-2 img").attr(
-    "src",
-    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[1].image
-  );
-  $("#kdr-partner-box-3 img").attr(
-    "src",
-    process.env.PUBLIC_URL + "/assets/images/partner/" + partner_data[2].image
-  );
-  $("#kdr-partner-box-1 img").fadeIn();
-  $("#kdr-partner-box-2 img").fadeIn();
-  $("#kdr-partner-box-3 img").fadeIn();
-  partner1++;
-  partner2++;
-  partner3++;
-
-  setInterval(function () {
-    if (partner1 >= dataPartnerLength) {
-      partner1 = 0;
-      $("#kdr-partner-box-1 img").fadeOut(function () {
-        $("#kdr-partner-box-1 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner1].image
-        );
-        partner1++;
-      });
-      $("#kdr-partner-box-1 img").fadeIn();
-    } else {
-      $("#kdr-partner-box-1 img").fadeOut(function () {
-        $("#kdr-partner-box-1 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner1].image
-        );
-        partner1++;
-      });
-      $("#kdr-partner-box-1 img").fadeIn();
-    }
-  }, 4000);
-
-  setInterval(function () {
-    if (partner2 >= dataPartnerLength) {
-      partner2 = 0;
-      $("#kdr-partner-box-2 img").fadeOut(function () {
-        $("#kdr-partner-box-2 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner2].image
-        );
-        partner2++;
-      });
-      $("#kdr-partner-box-2 img").fadeIn();
-    } else {
-      $("#kdr-partner-box-2 img").fadeOut(function () {
-        $("#kdr-partner-box-2 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner2].image
-        );
-        partner2++;
-      });
-      $("#kdr-partner-box-2 img").fadeIn();
-    }
-  }, 4000);
-
-  setInterval(function () {
-    if (partner3 >= dataPartnerLength) {
-      partner3 = 0;
-      $("#kdr-partner-box-3 img").fadeOut(function () {
-        $("#kdr-partner-box-3 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner3].image
-        );
-        partner3++;
-      });
-      $("#kdr-partner-box-3 img").fadeIn();
-    } else {
-      $("#kdr-partner-box-3 img").fadeOut(function () {
-        $("#kdr-partner-box-3 img").attr(
-          "src",
-          process.env.PUBLIC_URL +
-            "/assets/images/partner/" +
-            partner_data[partner3].image
-        );
-        partner3++;
-      });
-      $("#kdr-partner-box-3 img").fadeIn();
-    }
-  }, 4000);
-
-  // Fade In Scroll
-  $(window).scroll(function () {
-    $(".about-me-section").each(function (i) {
-      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
-      var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-      if (bottom_of_window > bottom_of_element) {
-        $(this).animate({ opacity: "1" }, 1000);
-      }
-    });
-  });
-  $(window).scroll(function () {
-    $(".kdr-characteristic-group").each(function (i) {
-      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
-      var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-      if (bottom_of_window > bottom_of_element) {
-        $(this).animate({ opacity: "1" }, 1000);
-      }
-    });
-  });
-  $(window).scroll(function () {
-    $(".kdr-product-section").each(function (i) {
-      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
-      var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-      if (bottom_of_window > bottom_of_element) {
-        $(this).animate({ opacity: "1" }, 1000);
-      }
-    });
-  });
-  $(window).scroll(function () {
-    $(".kdr-partner-section").each(function (i) {
-      var bottom_of_element = $(this).offset().top + $(this).outerHeight();
-      var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-      if (bottom_of_window > bottom_of_element) {
-        $(this).animate({ opacity: "1" }, 1000);
-      }
-    });
-  });
-});
 
 export default Home;
