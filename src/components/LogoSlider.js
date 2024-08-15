@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 // Import Data General
 import landingPageData from "../services/data";
 
-const LogoSlider = () => {
+const LogoSlider = (props) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -43,14 +43,9 @@ const LogoSlider = () => {
   return (
     <div className="logo-slider py-4 mb-5">
       <Slider {...settings}>
-        {landingPageData.partners.map((value) => (
-          <div className={value.id}>
-            <img
-              src={
-                process.env.PUBLIC_URL + "/assets/images/partner/" + value.image
-              }
-              alt={value.name}
-            />
+        {props.data.map((value, index) => (
+          <div key={index} className={value.id}>
+            <img src={value.image} alt={value.name} />
           </div>
         ))}
       </Slider>

@@ -11,50 +11,51 @@ import LogoSlider from "../components/LogoSlider";
 
 // Import Data General
 import data from "../services/data";
+import { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Container>
       <div className="row align-items-center kdr-hero-section">
         <div className="col-lg-6 py-5">
-          <h1>{data.general.title}</h1>
-          <h3>{data.general.description}</h3>
+          <h1>{props.data.title}</h1>
+          <h3>{props.data.description}</h3>
           <p>
             <a href="#product">Layanan Kami</a>
           </p>
         </div>
         <div className="col-lg-6 py-5 kdr-hero-section-image-container">
           <img
-            src={
-              process.env.PUBLIC_URL +
-              "/assets/images/" +
-              data.general.heroImage
-            }
+            src={props.data.heroImage}
             alt="Hero Image"
             className="img-fluid"
           />
+          {/* <img
+            src={
+              process.env.PUBLIC_URL + "/assets/images/" + props.data.heroImage
+            }
+            alt="Hero Image"
+            className="img-fluid"
+          /> */}
         </div>
       </div>
     </Container>
   );
 };
 
-const AboutMe = () => {
+const AboutMe = (props) => {
   return (
     <div className="about-me-section" id="about-me">
       <Container>
         <h3 className="text-center">Tentang Kami</h3>
         <div className="row align-items-center">
           <div className="col-lg-4 about-me-section-image-container">
-            <img
-              src={process.env.PUBLIC_URL + "/assets/logo/" + data.about.image}
-              alt="Logo KDR"
-            />
+            <img src={props.data.image} alt="Logo KDR" />
           </div>
           <div
             className="col-lg-8"
             dangerouslySetInnerHTML={{
-              __html: data.about.description,
+              __html: props.data.description,
             }}
           />
         </div>
@@ -63,20 +64,14 @@ const AboutMe = () => {
   );
 };
 
-const Characteristic = () => {
+const Characteristic = (props) => {
   return (
     <Container>
       <div className="kdr-characteristic-group">
-        {data.about.characteristics.map((value) => (
-          <div key={value.id} className="kdr-characteristic-item">
+        {props.data.map((value, index) => (
+          <div key={index} className="kdr-characteristic-item">
             <div>
-              <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/assets/images/characteristic/" +
-                  value.image
-                }
-              />
+              <img src={value.image} />
             </div>
             <h5>{value.name}</h5>
             <p>{value.description}</p>
@@ -87,22 +82,16 @@ const Characteristic = () => {
   );
 };
 
-const Product = () => {
+const Product = (props) => {
   return (
     <div className="kdr-product-section" id="product">
       <Container>
         <h3 className="text-center">Layanan Kami</h3>
-        {data.products.map((value, index) =>
+        {props.data.map((value, index) =>
           (index + 1) % 2 != 0 ? (
-            <div key={value.id} className="row align-items-center">
+            <div key={index} className="row align-items-center">
               <div className="col-lg-6 kdr-product-section-img-container">
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/images/product/" +
-                    value.image
-                  }
-                />
+                <img src={value.image} />
               </div>
               <div
                 className="col-lg-6 kdr-product-section-description-container"
@@ -111,7 +100,7 @@ const Product = () => {
             </div>
           ) : (
             <div
-              key={value.id}
+              key={index}
               className="row align-items-center kdr-product-section-reverse"
             >
               <div
@@ -119,13 +108,7 @@ const Product = () => {
                 dangerouslySetInnerHTML={{ __html: value.description }}
               />
               <div className="col-lg-6 kdr-product-section-img-container">
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/assets/images/product/" +
-                    value.image
-                  }
-                />
+                <img src={value.image} />
               </div>
             </div>
           )
@@ -135,25 +118,55 @@ const Product = () => {
   );
 };
 
-const Partner = () => {
+const Partner = (props) => {
   return (
     <div className="kdr-partner-section">
       <Container>
         <h3>Partner Kami</h3>
-        <LogoSlider />
+        <LogoSlider data={props.data} />
       </Container>
     </div>
   );
 };
 
 const Home = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch("https://api.kartadayareksabumi.com/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <>
-      <Header />
-      <AboutMe />
-      <Characteristic />
-      <Product />
-      <Partner />
+      <Header data={data.data.general} />
+      <AboutMe data={data.data.about} />
+      <Characteristic data={data.data.about.characteristic} />
+      <Product data={data.data.products} />
+      <Partner data={data.data.partners} />
     </>
   );
 };
