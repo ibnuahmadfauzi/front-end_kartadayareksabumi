@@ -24,6 +24,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="/blogs" element={<NoPage />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
