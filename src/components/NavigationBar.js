@@ -1,23 +1,13 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-// Import Data General
-import landingPageData from "../services/data";
-
-const NavigationBar = () => {
+const NavigationBar = (props) => {
   return (
     <Container>
       <Navbar expand="lg" className="bg-body-tertiary kdr-navbar">
         <Container>
           <Navbar.Brand href="/" className="kdr-navbar-brand">
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/assets/logo/" +
-                landingPageData.general.logoImage
-              }
-              alt="Logo KDR"
-            />
-            <span className="ms-2">{landingPageData.general.title}</span>
+            <img src={props.data.logoImage} alt="Logo KDR" />
+            <span className="ms-2">{props.data.title}</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

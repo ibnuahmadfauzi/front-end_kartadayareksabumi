@@ -3,9 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Import Data General
-import landingPageData from "../services/data";
-
 const LogoSlider = (props) => {
   const settings = {
     dots: true,

@@ -6,6 +6,16 @@ body {
   color: #373737 !important;
 }
 
+/* General Style */
+.load-gif {
+  display: flex;
+  justify-content: center;
+}
+.load-gif img {
+  height: 20px;
+}
+/* end General Style */
+
 /* Style for Navbar Section */
 .kdr-navbar {
   background-color: #f6f6f9 !important;

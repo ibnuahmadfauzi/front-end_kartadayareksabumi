@@ -10,8 +10,7 @@ import { Container } from "react-bootstrap";
 import LogoSlider from "../components/LogoSlider";
 
 // Import Data General
-import data from "../services/data";
-import { useEffect, useState } from "react";
+import useFetch from "../services/general_data";
 
 const Header = (props) => {
   return (
@@ -130,30 +129,16 @@ const Partner = (props) => {
 };
 
 const Home = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("https://api.kartadayareksabumi.com/")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+  const { data, loading, error } = useFetch(
+    "https://api.kartadayareksabumi.com/"
+  );
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="load-gif">
+        <img src={process.env.PUBLIC_URL + "/assets/images/load.gif"} />
+      </div>
+    );
   }
 
   if (error) {
