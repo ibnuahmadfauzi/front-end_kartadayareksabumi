@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 // Import React Route
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Import React Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,7 +26,15 @@ root.render(
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/artikel" element={<Articles />} />
+        <Route path="/artikel" element={<Articles type="general" />} />
+        <Route
+          path="/artikel/keyword/"
+          element={<Navigate to="/artikel" replace />}
+        />
+        <Route
+          path="/artikel/keyword/:keyword"
+          element={<Articles type="search" />}
+        />
         <Route path="/artikel/:slug" element={<Article />} />
         <Route path="*" element={<NoPage />} />
       </Route>

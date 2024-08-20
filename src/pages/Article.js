@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import NoPage from "./NoPage"; // Import the NoPage component
 import PopularArticle from "../components/PopularArticle";
+import SearchArticle from "../components/SearchArticle";
 
 function Article() {
   const { slug } = useParams();
@@ -83,6 +84,8 @@ function Article() {
           </div>
         </div>
         <div className="col-lg-4">
+          <SearchArticle />
+          <br />
           <PopularArticle />
         </div>
       </div>

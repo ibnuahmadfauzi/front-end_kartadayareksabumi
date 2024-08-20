@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import dataArticles from "../services/articles_data";
 import PopularArticle from "../components/PopularArticle";
+import SearchArticle from "../components/SearchArticle";
+import { useParams } from "react-router-dom";
 
 // Komponen Pagination
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -27,16 +29,35 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
-const Articles = () => {
+const Articles = (props) => {
+  const { keyword } = useParams();
+
+  let articlesList;
+
+  if (props.type === "general") {
+    articlesList = dataArticles.articles;
+  }
+
+  if (props.type === "search") {
+    if (keyword.length !== 0) {
+      const lowerCaseKeyword = keyword.toLowerCase();
+      const findArticles = dataArticles.articles.filter((value) =>
+        value.title.toLowerCase().includes(lowerCaseKeyword)
+      );
+
+      articlesList = findArticles;
+    }
+  }
+
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
-  const totalArticles = dataArticles.articles.length;
+  const totalArticles = articlesList.length;
   const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
   // Hitung artikel yang ditampilkan di halaman saat ini
   const startIndex = (currentPage - 1) * articlesPerPage;
   const endIndex = startIndex + articlesPerPage;
-  const currentArticles = dataArticles.articles.slice(startIndex, endIndex);
+  const currentArticles = articlesList.slice(startIndex, endIndex);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -44,10 +65,18 @@ const Articles = () => {
     }
   };
 
+  let titleList = "";
+
+  if (props.type === "general") {
+    titleList = "Semua Artikel";
+  } else if (props.type === "search") {
+    titleList = "Cari : " + keyword;
+  }
   return (
     <div className="container">
       <div className="row">
         <div className="col-lg-8">
+          <h5 className="fw-bold text-center">~ {titleList} ~</h5>
           <div className="row">
             {currentArticles.map((value) => (
               <div className="col-lg-6" key={value.id}>
@@ -73,6 +102,8 @@ const Articles = () => {
           />
         </div>
         <div className="col-lg-4">
+          <SearchArticle />
+          <br />
           <PopularArticle />
         </div>
       </div>
