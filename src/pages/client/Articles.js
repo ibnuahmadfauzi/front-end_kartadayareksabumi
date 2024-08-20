@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import dataArticles from "../../services/articles_data";
 import PopularArticle from "../../components/PopularArticle";
 import SearchArticle from "../../components/SearchArticle";
 import { useParams } from "react-router-dom";
+import useFetch from "../../services/general_data";
 
 // Komponen Pagination
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -31,17 +31,34 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
 const Articles = (props) => {
   const { keyword } = useParams();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { data, loading, error } = useFetch(
+    "https://api.kartadayareksabumi.com/articles"
+  );
+
+  if (loading) {
+    return (
+      <div className="load-gif">
+        <img src={process.env.PUBLIC_URL + "/assets/images/load.gif"} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   let articlesList;
 
   if (props.type === "general") {
-    articlesList = dataArticles.articles;
+    articlesList = data.data.articles;
   }
 
   if (props.type === "search") {
     if (keyword.length !== 0) {
       const lowerCaseKeyword = keyword.toLowerCase();
-      const findArticles = dataArticles.articles.filter((value) =>
+      const findArticles = data.data.articles.filter((value) =>
         value.title.toLowerCase().includes(lowerCaseKeyword)
       );
 
@@ -49,7 +66,6 @@ const Articles = (props) => {
     }
   }
 
-  const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
   const totalArticles = articlesList.length;
   const totalPages = Math.ceil(totalArticles / articlesPerPage);

@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import dataArticles from "../../services/articles_data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -12,22 +11,24 @@ import {
 import NoPage from "./NoPage"; // Import the NoPage component
 import PopularArticle from "../../components/PopularArticle";
 import SearchArticle from "../../components/SearchArticle";
+import useFetch from "../../services/general_data";
 
 function Article() {
   const { slug } = useParams();
 
-  let newArticle;
+  const { data, loading, error } = useFetch(
+    "https://api.kartadayareksabumi.com/articles/" + slug
+  );
 
-  const articleFound = dataArticles.articles.some((value) => {
-    if (slug === value.slug) {
-      newArticle = value;
-      return true;
-    }
-    return false;
-  });
+  if (loading) {
+    return (
+      <div className="load-gif">
+        <img src={process.env.PUBLIC_URL + "/assets/images/load.gif"} />
+      </div>
+    );
+  }
 
-  if (!articleFound) {
-    // If article not found, render NoPage component
+  if (error) {
     return <NoPage />;
   }
 
@@ -38,20 +39,33 @@ function Article() {
           <div className="card border-0">
             <div className="card-body">
               <div className="p-4">
-                <h3 className="fw-bold">{newArticle.title}</h3>
+                <h3 className="fw-bold">{data.data.title}</h3>
                 <small className="d-block">
                   <FontAwesomeIcon icon={faCalendarDays} />{" "}
-                  <span className="ms-1">{newArticle.publication_date}</span>
+                  <span className="ms-1">{data.data.publication_date}</span>
                 </small>
                 <div className="mt-3 d-flex align-items-center">
                   <small className="me-2">Share :</small>{" "}
-                  <a href="#" className="fs-4 text-dark mx-1">
+                  <a
+                    href={
+                      "https://api.whatsapp.com/send?text=" +
+                      window.location.href
+                    }
+                    target="_blank"
+                    className="fs-4 text-dark mx-1"
+                  >
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </a>
                   <a href="#" className="fs-4 text-dark mx-1">
                     <FontAwesomeIcon icon={faTelegram} />
                   </a>
-                  <a href="#" className="fs-4 text-dark mx-1">
+                  <a
+                    href={
+                      "https://twitter.com/intent/tweet?text=Your%20Text%20Here&url=YourURLHere" +
+                      window.location.href
+                    }
+                    className="fs-4 text-dark mx-1"
+                  >
                     <FontAwesomeIcon icon={faXTwitter} />
                   </a>
                   <a href="#" className="fs-4 text-dark mx-1">
@@ -59,17 +73,17 @@ function Article() {
                   </a>
                 </div>
                 <div className="mb-3">
-                  <img src={newArticle.image} className="w-100" />
+                  <img src={data.data.image} className="w-100" />
                 </div>
                 <div
                   style={{ textAlign: "justify" }}
-                  dangerouslySetInnerHTML={{ __html: newArticle.content }}
+                  dangerouslySetInnerHTML={{ __html: data.data.content }}
                 />
                 <div className="mt-4">
                   <small className="fw-bold">Tag: </small>{" "}
                   <small>
                     {" "}
-                    {newArticle.tag.map((value) => (
+                    {data.data.tag.map((value) => (
                       <span
                         key={value}
                         className="bg-secondary rounded text-light px-2 py-1 mx-1"

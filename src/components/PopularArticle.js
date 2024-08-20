@@ -1,8 +1,23 @@
-import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
-import dataArticles from "../services/articles_data";
+import useFetch from "../services/general_data";
 
 const PopularArticle = () => {
-  const popular = dataArticles.articles.sort((a, b) => b.hit - a.hit);
+  const { data, loading, error } = useFetch(
+    "https://api.kartadayareksabumi.com/articles"
+  );
+
+  if (loading) {
+    return (
+      <div className="load-gif">
+        <img src={process.env.PUBLIC_URL + "/assets/images/load.gif"} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const popular = data.data.articles.sort((a, b) => b.hit - a.hit);
   const top5Articles = popular.slice(0, 5);
 
   return (
