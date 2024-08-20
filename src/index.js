@@ -18,6 +18,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import NoPage from "./pages/NoPage";
 import Articles from "./pages/Articles.js";
+import Article from "./pages/Article.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,6 +27,7 @@ root.render(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/artikel" element={<Articles />} />
+        <Route path="/artikel/:slug" element={<Article />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

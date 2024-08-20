@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import dataArticles from "../services/articles_data";
+import PopularArticle from "../components/PopularArticle";
 
 // Komponen Pagination
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -59,7 +60,7 @@ const Articles = () => {
                     />
                     <h6 className="fw-bold">{value.title}</h6>
                     <p>{value.excerpt}</p>
-                    <a href={"/article/" + value.slug}>Read more ...</a>
+                    <a href={"/artikel/" + value.slug}>Read more ...</a>
                   </div>
                 </div>
               </div>
@@ -71,7 +72,9 @@ const Articles = () => {
             onPageChange={handlePageChange}
           />
         </div>
-        <div className="col-lg-4"></div>
+        <div className="col-lg-4">
+          <PopularArticle />
+        </div>
       </div>
     </div>
   );

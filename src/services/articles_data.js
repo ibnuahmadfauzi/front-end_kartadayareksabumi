@@ -13,6 +13,7 @@ const dataArticles = {
       tag: ["AI", "Technology", "Innovation"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 2,
@@ -27,6 +28,7 @@ const dataArticles = {
       tag: ["Remote Work", "Trends", "Technology"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 3,
@@ -41,6 +43,7 @@ const dataArticles = {
       tag: ["Blockchain", "Technology", "Cryptocurrency"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 4,
@@ -55,6 +58,7 @@ const dataArticles = {
       tag: ["Digital Marketing", "Strategy", "Social Media"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 5,
@@ -69,6 +73,7 @@ const dataArticles = {
       tag: ["Renewable Energy", "Technology", "Sustainability"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 6,
@@ -83,6 +88,7 @@ const dataArticles = {
       tag: ["AI", "Healthcare", "Technology"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 7,
@@ -97,6 +103,7 @@ const dataArticles = {
       tag: ["Smart Home", "Technology", "IoT"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 8,
@@ -111,6 +118,7 @@ const dataArticles = {
       tag: ["Autonomous Vehicles", "Technology", "Innovation"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 9,
@@ -125,6 +133,7 @@ const dataArticles = {
       tag: ["Quantum Computing", "Technology", "Science"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 10,
@@ -139,6 +148,7 @@ const dataArticles = {
       tag: ["Big Data", "Business", "Analytics"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 11,
@@ -153,6 +163,7 @@ const dataArticles = {
       tag: ["Sustainable Agriculture", "Environment", "Farming"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 12,
@@ -167,6 +178,7 @@ const dataArticles = {
       tag: ["5G", "Technology", "Communication"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 13,
@@ -181,6 +193,7 @@ const dataArticles = {
       tag: ["Cybersecurity", "Digital", "Privacy"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 14,
@@ -195,6 +208,7 @@ const dataArticles = {
       tag: ["Electric Vehicles", "Environment", "Sustainability"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 15,
@@ -209,6 +223,7 @@ const dataArticles = {
       tag: ["Social Media", "Marketing", "Branding"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 16,
@@ -223,6 +238,7 @@ const dataArticles = {
       tag: ["Gaming", "Technology", "Virtual Reality"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 17,
@@ -237,6 +253,7 @@ const dataArticles = {
       tag: ["AI", "Education", "Technology"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 18,
@@ -251,6 +268,7 @@ const dataArticles = {
       tag: ["Space", "Exploration", "Technology"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 19,
@@ -265,6 +283,7 @@ const dataArticles = {
       tag: ["Mental Health", "Awareness", "Support"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
     {
       id: 20,
@@ -279,6 +298,7 @@ const dataArticles = {
       tag: ["Renewable Energy", "Technology", "Climate Change"],
       image:
         "https://demirsondaj.com.tr/wp-content/uploads/demo/placeholder.svg",
+      hit: Math.floor(Math.random() * 100) + 1,
     },
   ],
 };
