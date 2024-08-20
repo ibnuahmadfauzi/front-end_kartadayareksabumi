@@ -14,17 +14,18 @@ import "./assets/styles/index.css";
 import "./assets/script/index.js";
 
 // Import Component Page
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import NoPage from "./pages/NoPage";
-import Articles from "./pages/Articles.js";
-import Article from "./pages/Article.js";
+import Layout from "./pages/client/Layout.js";
+import Home from "./pages/client/Home.js";
+import NoPage from "./pages/client/NoPage.js";
+import Articles from "./pages/client/Articles.js";
+import Article from "./pages/client/Article.js";
+import MainLayout from "./layouts/MainLayout.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="/artikel" element={<Articles type="general" />} />
         <Route

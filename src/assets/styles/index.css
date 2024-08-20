@@ -8,7 +8,9 @@ body {
 
 /* General Style */
 .load-gif {
+  height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 .load-gif img {

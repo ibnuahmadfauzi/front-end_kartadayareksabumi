@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import dataArticles from "../services/articles_data";
+import dataArticles from "../../services/articles_data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -10,8 +10,8 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import NoPage from "./NoPage"; // Import the NoPage component
-import PopularArticle from "../components/PopularArticle";
-import SearchArticle from "../components/SearchArticle";
+import PopularArticle from "../../components/PopularArticle";
+import SearchArticle from "../../components/SearchArticle";
 
 function Article() {
   const { slug } = useParams();

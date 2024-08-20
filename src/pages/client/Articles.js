@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import dataArticles from "../services/articles_data";
-import PopularArticle from "../components/PopularArticle";
-import SearchArticle from "../components/SearchArticle";
+import dataArticles from "../../services/articles_data";
+import PopularArticle from "../../components/PopularArticle";
+import SearchArticle from "../../components/SearchArticle";
 import { useParams } from "react-router-dom";
 
 // Komponen Pagination

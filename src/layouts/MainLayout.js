@@ -4,7 +4,7 @@ import NavigationBar from "../components/NavigationBar";
 import Footer from "../components/Footer";
 import useFetch from "../services/general_data";
 
-const Layout = () => {
+const MainLayout = () => {
   const { data, loading, error } = useFetch(
     "https://api.kartadayareksabumi.com/"
   );
@@ -30,4 +30,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;

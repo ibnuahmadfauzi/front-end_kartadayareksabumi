@@ -7,11 +7,11 @@
 import { Container } from "react-bootstrap";
 
 // Import jQuery
-import LogoSlider from "../components/LogoSlider";
+import LogoSlider from "../../components/LogoSlider";
 
 // Import Data General
-import useFetch from "../services/general_data";
-import dataArticles from "../services/articles_data";
+import useFetch from "../../services/general_data";
+import dataArticles from "../../services/articles_data";
 
 const Header = (props) => {
   return (
