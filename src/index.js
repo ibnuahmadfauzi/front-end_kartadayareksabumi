@@ -20,6 +20,8 @@ import NoPage from "./pages/client/NoPage.js";
 import Articles from "./pages/client/Articles.js";
 import Article from "./pages/client/Article.js";
 import MainLayout from "./layouts/MainLayout.js";
+import Secondlayout from "./layouts/SecondLayout.js";
+import Login from "./pages/admin/Login.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +39,10 @@ root.render(
           element={<Articles type="search" />}
         />
         <Route path="/artikel/:slug" element={<Article />} />
+        <Route path="*" element={<NoPage />} />
+      </Route>
+      <Route path="/kdr-auth/login" element={<Secondlayout />}>
+        <Route index element={<Login />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
