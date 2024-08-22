@@ -22,6 +22,12 @@ import Article from "./pages/client/Article.js";
 import MainLayout from "./layouts/MainLayout.js";
 import Secondlayout from "./layouts/SecondLayout.js";
 import Login from "./pages/admin/Login.js";
+import ThirdLayout from "./layouts/ThirdLayout.js";
+import Dashboard from "./pages/admin/Dashboard.js";
+import Message from "./pages/admin/Message.js";
+import General from "./pages/admin/General.js";
+import User from "./pages/admin/User.js";
+import AdminArticle from "./pages/admin/Article.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -43,6 +49,15 @@ root.render(
       </Route>
       <Route path="/kdr-auth/login" element={<Secondlayout />}>
         <Route index element={<Login />} />
+        <Route path="*" element={<NoPage />} />
+      </Route>
+      <Route path="/kdr-auth" element={<ThirdLayout />}>
+        <Route index element={<Navigate to="/kdr-auth/dashboard" replace />} />
+        <Route path="/kdr-auth/dashboard" element={<Dashboard />} />
+        <Route path="/kdr-auth/article" element={<AdminArticle />} />
+        <Route path="/kdr-auth/message" element={<Message />} />
+        <Route path="/kdr-auth/general" element={<General />} />
+        <Route path="/kdr-auth/user" element={<User />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
