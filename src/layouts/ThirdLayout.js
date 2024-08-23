@@ -31,6 +31,9 @@ const ThirdLayout = () => {
             </Container>
           </div>
         </div>
+        <div className="py-3">
+          <p className="text-center">Karta Daya Reksabumi | 2024</p>
+        </div>
       </Container>
     </ProtectedRoute>
   );

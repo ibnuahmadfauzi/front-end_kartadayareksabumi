@@ -1,9 +1,13 @@
 import { faRocketchat } from "@fortawesome/free-brands-svg-icons";
 import {
+  faBellConcierge,
   faBlog,
+  faCertificate,
   faChartSimple,
   faFaceSmileWink,
   faGear,
+  faHandshake,
+  faHandshakeAlt,
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -50,6 +54,33 @@ const DashboardSideBar = () => {
               <FontAwesomeIcon icon={faGear} />
             </span>
             General
+          </a>
+          <a
+            href="/kdr-auth/service"
+            className="list-group-item list-group-item-action"
+          >
+            <span className="d-inline-block" style={{ width: "30px" }}>
+              <FontAwesomeIcon icon={faBellConcierge} />
+            </span>
+            Service
+          </a>
+          <a
+            href="/kdr-auth/characteristic"
+            className="list-group-item list-group-item-action"
+          >
+            <span className="d-inline-block" style={{ width: "30px" }}>
+              <FontAwesomeIcon icon={faCertificate} />
+            </span>
+            Characteristic
+          </a>
+          <a
+            href="/kdr-auth/partner"
+            className="list-group-item list-group-item-action"
+          >
+            <span className="d-inline-block" style={{ width: "30px" }}>
+              <FontAwesomeIcon icon={faHandshake} />
+            </span>
+            Partner
           </a>
           <a
             href="/kdr-auth/message"

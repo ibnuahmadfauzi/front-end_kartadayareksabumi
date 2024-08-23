@@ -28,6 +28,10 @@ import Message from "./pages/admin/Message.js";
 import General from "./pages/admin/General.js";
 import User from "./pages/admin/User.js";
 import AdminArticle from "./pages/admin/Article.js";
+import Partner from "./pages/admin/Partner.js";
+import Service from "./pages/admin/Service.js";
+import Characteristic from "./pages/admin/Characteristic.js";
+import ArticleEdit from "./pages/admin/ArticleEdit.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -55,9 +59,13 @@ root.render(
         <Route index element={<Navigate to="/kdr-auth/dashboard" replace />} />
         <Route path="/kdr-auth/dashboard" element={<Dashboard />} />
         <Route path="/kdr-auth/article" element={<AdminArticle />} />
+        <Route path="/kdr-auth/article/create" element={<ArticleEdit />} />
         <Route path="/kdr-auth/message" element={<Message />} />
         <Route path="/kdr-auth/general" element={<General />} />
         <Route path="/kdr-auth/user" element={<User />} />
+        <Route path="/kdr-auth/partner" element={<Partner />} />
+        <Route path="/kdr-auth/service" element={<Service />} />
+        <Route path="/kdr-auth/characteristic" element={<Characteristic />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
