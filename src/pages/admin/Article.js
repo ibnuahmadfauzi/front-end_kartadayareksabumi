@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   faBlog,
   faPencil,
@@ -6,14 +6,29 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useFetch from "../../services/general_data";
 import DataTable from "react-data-table-component";
+import axios from "axios";
 
 const AdminArticle = () => {
-  const { data, loading, error } = useFetch(
-    "https://api.kartadayareksabumi.com/articles"
-  );
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [search, setSearch] = useState(""); // State untuk menyimpan kata kunci pencarian
+
+  useEffect(() => {
+    // Mengambil data dari API
+    axios
+      .get("https://api.kartadayareksabumi.com/articles")
+      .then((response) => {
+        setArticles(response.data.data.articles); // Menyimpan data yang diterima ke dalam state
+        setLoading(false); // Menyatakan bahwa loading telah selesai
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError(error); // Menyimpan error ke dalam state
+        setLoading(false);
+      });
+  }, []); // Kosong array dependency berarti hanya akan dijalankan sekali saat komponen pertama kali dirender
 
   if (loading) {
     return (
@@ -25,7 +40,6 @@ const AdminArticle = () => {
       </div>
     );
   }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   }
@@ -68,7 +82,7 @@ const AdminArticle = () => {
     },
   ];
 
-  const articles = data.data.articles; // Mengambil data articles
+  // const articles = data.data.articles; // Mengambil data articles
 
   // Filter data berdasarkan kata kunci pencarian
   const filteredArticles = articles.filter((article) => {
