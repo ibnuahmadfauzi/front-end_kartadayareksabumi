@@ -2,9 +2,17 @@ import { faFloppyDisk, faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useFetch from "../../services/general_data";
 import { useState } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 
 const General = () => {
   const [aboutDescription, setAboutDescription] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleEditorChange = (content, editor) => {
+    setContent(content);
+    console.log("Content was updated:", content);
+  };
+
   //   console.log(dataArticles.articles);
   const { data, loading, error } = useFetch(
     "https://api.kartadayareksabumi.com/"
@@ -48,15 +56,36 @@ const General = () => {
               </div>
               <div className="mb-3">
                 <label htmlFor="general-description" className="form-label">
-                  Description :
+                  Subtitle :
                 </label>
                 <textarea className="form-control" rows={5}>
                   {data.data.general.description}
                 </textarea>
               </div>
+              <div className="mb-3">
+                <label className="form-label"> About Description :</label>
+                <Editor
+                  apiKey="w6tpfwzlhan55099d0w5k02viw05zvhtpow811d9cqjree2v" // Ganti dengan API key yang valid jika diperlukan
+                  initialValue="" // Konten default
+                  onEditorChange={handleEditorChange}
+                  init={{
+                    height: 300,
+                    menubar: false,
+                    plugins: [
+                      "advlist autolink lists link image charmap print preview anchor",
+                      "searchreplace visualblocks code fullscreen",
+                      "insertdatetime media table paste code help wordcount",
+                    ],
+                    toolbar:
+                      "undo redo | formatselect | bold italic backcolor | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | removeformat | help",
+                  }}
+                />
+              </div>
             </div>
             <div className="col-lg-6">
-              <div className="row">
+              <div className="row mb-3">
                 <div className="col-lg-6">
                   <div className="mb-3">
                     <label className="form-label">Logo :</label>
@@ -91,6 +120,23 @@ const General = () => {
                     />
                   </div>
                 </div>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">About Image :</label>
+                <label
+                  htmlFor="general-about-image"
+                  className="mb-3 d-block text-center"
+                >
+                  <img
+                    src={data.data.general.logoImage}
+                    style={{ maxHeight: "200px" }}
+                  />
+                </label>
+                <input
+                  type="file"
+                  id="general-about-image"
+                  className="form-control"
+                />
               </div>
             </div>
           </div>

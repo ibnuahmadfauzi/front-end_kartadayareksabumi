@@ -8,54 +8,43 @@ import { Container } from "react-bootstrap";
 import users from "../../services/user_service";
 import CryptoJS from "crypto-js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [message, setMessage] = useState("");
+  const [token, setToken] = useState("");
+
   const navigate = useNavigate();
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Username:", username);
-    console.log("Password:", password);
+    const loginData = {
+      username: username,
+      password: password,
+    };
 
-    users.map((value) => {
-      if (value.username === username) {
-        if (
-          password ===
-          CryptoJS.AES.decrypt(value.password, "your-secret-key").toString(
-            CryptoJS.enc.Utf8
-          )
-        ) {
-          setStatus(true); // Update status
-        }
-      }
-    });
-
-    if (status === false) {
-      setMessage(true);
-    }
+    axios
+      .post("https://api.kartadayareksabumi.com/user/login", loginData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.headers);
+        setTimeout(() => {
+          navigate("/kdr-auth/dashboard");
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+        setMessage("Login failed. Please check your credentials.");
+      });
   };
-
-  useEffect(() => {
-    if (status) {
-      // Lakukan sesuatu setelah status diperbarui, misalnya redirect
-      console.log("Status updated:", status); // jika menggunakan useNavigate dari react-router-dom
-      localStorage.setItem("isLoggedIn", true);
-      navigate("/kdr-auth/dashboard");
-    }
-  }, [status]);
 
   return (
     <Container>
@@ -68,16 +57,6 @@ const Login = () => {
             <div className="card-body">
               <h2 className="fw-bold text-center">Login</h2>
               <hr />
-              {message ? (
-                <div className="alert alert-danger">
-                  <FontAwesomeIcon icon={faTriangleExclamation} />
-                  <span className="ms-2">
-                    username or password is incorrect
-                  </span>
-                </div>
-              ) : (
-                ""
-              )}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <input
@@ -86,17 +65,18 @@ const Login = () => {
                     placeholder="Username . . ."
                     className="form-control"
                     value={username}
-                    onChange={handleUsernameChange}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-3">
                   <input
-                    type="password"
-                    name="password"
                     placeholder="Password . . ."
                     className="form-control"
+                    type="password"
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -104,6 +84,7 @@ const Login = () => {
                     <FontAwesomeIcon icon={faRightToBracket} /> SignIn
                   </button>
                 </div>
+                {message && <p>{message}</p>}
               </form>
             </div>
           </div>

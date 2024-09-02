@@ -1,7 +1,9 @@
 import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
+  console.log(Cookies.get());
   return (
     <div>
       <h3 className="fw-bold">

@@ -37,35 +37,43 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
+      {/* Semua layout sekarang dibungkus dalam route utama "/" */}
       <Route path="/" element={<MainLayout />}>
+        {/* Halaman home */}
         <Route index element={<Home />} />
-        <Route path="/artikel" element={<Articles type="general" />} />
+
+        {/* Rute untuk artikel */}
+        <Route path="artikel" element={<Articles type="general" />} />
         <Route
-          path="/artikel/keyword/"
+          path="artikel/keyword/"
           element={<Navigate to="/artikel" replace />}
         />
         <Route
-          path="/artikel/keyword/:keyword"
+          path="artikel/keyword/:keyword"
           element={<Articles type="search" />}
         />
-        <Route path="/artikel/:slug" element={<Article />} />
-        <Route path="*" element={<NoPage />} />
-      </Route>
-      <Route path="/kdr-auth/login" element={<Secondlayout />}>
-        <Route index element={<Login />} />
-        <Route path="*" element={<NoPage />} />
-      </Route>
-      <Route path="/kdr-auth" element={<ThirdLayout />}>
-        <Route index element={<Navigate to="/kdr-auth/dashboard" replace />} />
-        <Route path="/kdr-auth/dashboard" element={<Dashboard />} />
-        <Route path="/kdr-auth/article" element={<AdminArticle />} />
-        <Route path="/kdr-auth/article/create" element={<ArticleEdit />} />
-        <Route path="/kdr-auth/message" element={<Message />} />
-        <Route path="/kdr-auth/general" element={<General />} />
-        <Route path="/kdr-auth/user" element={<User />} />
-        <Route path="/kdr-auth/partner" element={<Partner />} />
-        <Route path="/kdr-auth/service" element={<Service />} />
-        <Route path="/kdr-auth/characteristic" element={<Characteristic />} />
+        <Route path="artikel/:slug" element={<Article />} />
+
+        {/* Rute untuk login */}
+        <Route path="kdr-auth/login" element={<Secondlayout />}>
+          <Route index element={<Login />} />
+        </Route>
+
+        {/* Semua rute /kdr-auth dibungkus di dalam route / */}
+        <Route path="kdr-auth" element={<ThirdLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="article" element={<AdminArticle />} />
+          <Route path="article/create" element={<ArticleEdit />} />
+          <Route path="message" element={<Message />} />
+          <Route path="general" element={<General />} />
+          <Route path="user" element={<User />} />
+          <Route path="partner" element={<Partner />} />
+          <Route path="service" element={<Service />} />
+          <Route path="characteristic" element={<Characteristic />} />
+        </Route>
+
+        {/* Penanganan untuk rute tidak ditemukan */}
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

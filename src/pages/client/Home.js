@@ -18,7 +18,7 @@ const Header = (props) => {
       <div className="row align-items-center kdr-hero-section">
         <div className="col-lg-6 py-5">
           <h1>{props.data.title}</h1>
-          <h3>{props.data.description}</h3>
+          <h3>{props.data.subtitle}</h3>
           <p>
             <a href="#product">Layanan Kami</a>
           </p>
@@ -49,7 +49,7 @@ const AboutMe = (props) => {
         <h3 className="text-center">Tentang Kami</h3>
         <div className="row align-items-center">
           <div className="col-lg-4 about-me-section-image-container">
-            <img src={props.data.image} alt="Logo KDR" />
+            <img src={props.data.aboutImage} alt="Logo KDR" />
           </div>
           <div
             className="col-lg-8"
@@ -149,8 +149,8 @@ const Home = () => {
   return (
     <>
       <Header data={data.data.general} />
-      <AboutMe data={data.data.about} />
-      <Characteristic data={data.data.about.characteristic} />
+      <AboutMe data={data.data.general} />
+      <Characteristic data={data.data.characteristic} />
       <Product data={data.data.products} />
       <Partner data={data.data.partners} />
     </>
