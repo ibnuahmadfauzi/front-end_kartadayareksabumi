@@ -12,6 +12,8 @@ import LogoSlider from "../../components/LogoSlider";
 // Import Data General
 import useFetch from "../../services/general_data";
 
+import { useCookies } from "react-cookie";
+
 const Header = (props) => {
   return (
     <Container>
@@ -129,6 +131,8 @@ const Partner = (props) => {
 };
 
 const Home = () => {
+  //   const [cookies] = useCookies(["SessionID"]);
+  //   console.log(cookies);
   //   console.log(dataArticles.articles);
   const { data, loading, error } = useFetch(
     "https://api.kartadayareksabumi.com/"
