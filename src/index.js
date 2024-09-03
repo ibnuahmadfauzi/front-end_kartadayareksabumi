@@ -32,6 +32,7 @@ import Partner from "./pages/admin/Partner.js";
 import Service from "./pages/admin/Service.js";
 import Characteristic from "./pages/admin/Characteristic.js";
 import ArticleEdit from "./pages/admin/ArticleEdit.js";
+import FirstLayout from "./layouts/FirstLayout.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -40,19 +41,21 @@ root.render(
       {/* Semua layout sekarang dibungkus dalam route utama "/" */}
       <Route path="/" element={<MainLayout />}>
         {/* Halaman home */}
-        <Route index element={<Home />} />
+        <Route path="/" element={<FirstLayout />}>
+          <Route index element={<Home />} />
 
-        {/* Rute untuk artikel */}
-        <Route path="artikel" element={<Articles type="general" />} />
-        <Route
-          path="artikel/keyword/"
-          element={<Navigate to="/artikel" replace />}
-        />
-        <Route
-          path="artikel/keyword/:keyword"
-          element={<Articles type="search" />}
-        />
-        <Route path="artikel/:slug" element={<Article />} />
+          {/* Rute untuk artikel */}
+          <Route path="artikel" element={<Articles type="general" />} />
+          <Route
+            path="artikel/keyword/"
+            element={<Navigate to="/artikel" replace />}
+          />
+          <Route
+            path="artikel/keyword/:keyword"
+            element={<Articles type="search" />}
+          />
+          <Route path="artikel/:slug" element={<Article />} />
+        </Route>
 
         {/* Rute untuk login */}
         <Route path="kdr-auth/login" element={<Secondlayout />}>
