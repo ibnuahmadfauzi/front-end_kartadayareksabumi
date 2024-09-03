@@ -1,11 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 const ProtectedRoute = ({ children }) => {
-  //   const isLoggedIn = cookies; // Ambil nilai cookie
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Tambahkan state untuk loading
 
   const checkAccess = async () => {
     try {
@@ -16,6 +15,8 @@ const ProtectedRoute = ({ children }) => {
     } catch (error) {
       console.error("Access denied:", error);
       setIsAuthenticated(false); // Set user as unauthenticated
+    } finally {
+      setIsLoading(false); // Set loading selesai
     }
   };
 
@@ -23,16 +24,18 @@ const ProtectedRoute = ({ children }) => {
     checkAccess(); // Check access when the component mounts
   }, []);
 
-  console.log(isAuthenticated);
-
-  if (!isAuthenticated) {
-    return <Navigate to="login" replace />;
+  if (isLoading) {
+    // Render loading indicator atau null saat loading
+    return (
+      <div className="load-gif">
+        <img src={process.env.PUBLIC_URL + "/assets/images/load.gif"} />
+      </div>
+    );
   }
 
-  //   if (!isLoggedIn) {
-  //     // Redirect to login page if not logged in
-  //     return <Navigate to="/kdr-auth/login" />;
-  //   }
+  if (!isAuthenticated) {
+    return <Navigate to="/kdr-auth/login" replace />;
+  }
 
   // Render the children (protected component) if logged in
   return children;
