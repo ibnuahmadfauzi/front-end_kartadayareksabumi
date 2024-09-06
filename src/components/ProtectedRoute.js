@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -12,6 +13,7 @@ const ProtectedRoute = ({ children }) => {
         withCredentials: true,
       });
       setIsAuthenticated(true); // Set user as authenticated
+      Cookies.set("isLogin", true);
     } catch (error) {
       console.error("Access denied:", error);
       setIsAuthenticated(false); // Set user as unauthenticated
@@ -34,6 +36,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   if (!isAuthenticated) {
+    Cookies.remove("isLogin");
     return <Navigate to="/kdr-auth/login" replace />;
   }
 

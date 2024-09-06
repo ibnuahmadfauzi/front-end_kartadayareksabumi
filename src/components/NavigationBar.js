@@ -1,4 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import Cookies from "js-cookie";
 
 const NavigationBar = (props) => {
   return (
@@ -16,6 +17,9 @@ const NavigationBar = (props) => {
               <Nav.Link href="/artikel">Artikel</Nav.Link>
               <Nav.Link href="/#about-me">Tentang Kami</Nav.Link>
               <Nav.Link href="#contact">Kontak</Nav.Link>
+              {Cookies.get("isLogin") && (
+                <Nav.Link href="/kdr-auth/dashboard">Dashboard</Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

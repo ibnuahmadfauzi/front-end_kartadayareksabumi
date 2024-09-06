@@ -34,11 +34,7 @@ const Login = () => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.headers);
-        setTimeout(() => {
-          navigate("/kdr-auth/dashboard");
-        }, 5000);
+        navigate("/kdr-auth/dashboard");
       })
       .catch((error) => {
         console.error("Login error:", error);
