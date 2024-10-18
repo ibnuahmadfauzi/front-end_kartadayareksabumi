@@ -33,6 +33,7 @@ import Service from "./pages/admin/Service.js";
 import Characteristic from "./pages/admin/Characteristic.js";
 import ArticleEdit from "./pages/admin/ArticleEdit.js";
 import FirstLayout from "./layouts/FirstLayout.js";
+import Careers from "./pages/client/Careers.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -55,6 +56,7 @@ root.render(
             element={<Articles type="search" />}
           />
           <Route path="artikel/:slug" element={<Article />} />
+          <Route path="karir" element={<Careers />} />
         </Route>
 
         {/* Rute untuk login */}

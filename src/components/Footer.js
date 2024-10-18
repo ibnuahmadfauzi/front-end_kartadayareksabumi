@@ -11,13 +11,13 @@ const Footer = () => {
               <div className="p-5 kdr-footer-section-box-item">
                 <h4>Main Office</h4>
                 <p>
-                  Dk. Kramatsari 05/05. Karanggeneng, Boyolali, Jawa Tengah,
-                  Indonesia, 57312
-                </p>
-                <h4>Workshop</h4>
-                <p>
                   Jl. Sermata, Rembang, Kec. Sananwetan, Kota Blitar, Jawa Timur
                   66131
+                </p>
+                <h4>Studio</h4>
+                <p>
+                  Jl. Ki Ageng Kuning, Kuningan, Kanigoro, Kabupaten Blitar,
+                  66171 Jawa Timur - Indonesia
                 </p>
                 <h4>Kontak</h4>
                 <p>

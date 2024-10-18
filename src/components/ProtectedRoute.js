@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
 
   const checkAccess = async () => {
     try {
-      await axios.get("https://api.kartadayareksabumi.com/products", {
+      await axios.get("https://api.kartadayareksabumi.com/admin/products", {
         withCredentials: true,
       });
       setIsAuthenticated(true); // Set user as authenticated

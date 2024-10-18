@@ -16,7 +16,7 @@ const NavigationBar = (props) => {
               <Nav.Link href="/">Beranda</Nav.Link>
               <Nav.Link href="/artikel">Artikel</Nav.Link>
               <Nav.Link href="/#about-me">Tentang Kami</Nav.Link>
-              <Nav.Link href="#contact">Kontak</Nav.Link>
+              <Nav.Link href="/karir">Karir</Nav.Link>
               {Cookies.get("isLogin") && (
                 <Nav.Link href="/kdr-auth/dashboard">Dashboard</Nav.Link>
               )}

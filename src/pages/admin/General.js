@@ -59,14 +59,14 @@ const General = () => {
                   Subtitle :
                 </label>
                 <textarea className="form-control" rows={5}>
-                  {data.data.general.description}
+                  {data.data.general.subtitle}
                 </textarea>
               </div>
               <div className="mb-3">
                 <label className="form-label"> About Description :</label>
                 <Editor
                   apiKey="w6tpfwzlhan55099d0w5k02viw05zvhtpow811d9cqjree2v" // Ganti dengan API key yang valid jika diperlukan
-                  initialValue="" // Konten default
+                  initialValue={data.data.general.description} // Konten default
                   onEditorChange={handleEditorChange}
                   init={{
                     height: 300,
