@@ -4,6 +4,7 @@ const karir = [
     title: "Staf Human Resources Capital & General Affairs",
     slug: "staf-human-resources-capital-general-affairs",
     thumbnail: "human-resources-capital.jpg",
+    status: "closed",
     qualifications: [
       "Perempuan",
       "Pendidikan minimal S1 Psikologi / Manajemen Sumber Daya Manusia",
@@ -31,6 +32,7 @@ const karir = [
     title: "Staf Administrasi Perkantoran",
     slug: "staf-administrasi-perkantoran",
     thumbnail: "office-administration-staff.jpg",
+    status: "closed",
     qualifications: [
       "Perempuan",
       "Pendidikan minimal D3 semua jurusan",
@@ -56,6 +58,7 @@ const karir = [
     title: "Staf Administrasi Project",
     slug: "staf-administrasi-project",
     thumbnail: "project-administration-staff.jpg",
+    status: "closed",
     qualifications: [
       "Laki-laki",
       "Pendidikan minimal D3 semua jurusan",

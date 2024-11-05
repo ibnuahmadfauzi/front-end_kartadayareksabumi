@@ -34,7 +34,14 @@ const Careers = () => {
             <div key={value.id} className="card border-0 mb-3">
               <div className="card-body">
                 <div className="d-flex justify-content-between mb-2">
-                  <h6 className="fw-semibold">{value.title}</h6>
+                  <h6 className="fw-semibold">
+                    {value.title}{" "}
+                    {value.status === "closed" ? (
+                      <span class="badge text-bg-danger">Closed</span>
+                    ) : (
+                      <span class="badge text-bg-primary">Open</span>
+                    )}
+                  </h6>
                   <Button
                     variant="secondary"
                     size="sm"
@@ -87,12 +94,21 @@ const Careers = () => {
               <span>{modalContent.value.location}</span>
             </p>
             <div className="py-2">
-              <a
-                href="mailto:hrc@arunikacorp.com"
-                className="w-100 btn fw-semibold btn-secondary"
-              >
-                Apply
-              </a>
+              {modalContent.value.status === "closed" ? (
+                <a
+                  href="#"
+                  className="w-100 btn fw-semibold btn-danger disabled"
+                >
+                  Closed
+                </a>
+              ) : (
+                <a
+                  href="mailto:hrc@arunikacorp.com"
+                  className="w-100 btn fw-semibold btn-secondary"
+                >
+                  Apply
+                </a>
+              )}
             </div>
             <p className="text-center">
               <span className="d-block">
